@@ -1,7 +1,7 @@
  var http = require("http");
 
  http.createServer(function (request, response) {
-     response.writeHead(200, {"Contett-Type": "text/arial"});
+     response.writeHead(200, {"Contett-Type": "text/plain"});
      response.end("Hello World!");
  }).listen(8125);
 
