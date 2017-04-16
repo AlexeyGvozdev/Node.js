@@ -1,9 +1,11 @@
 var http = require('http'),
     fs = require('fs'),
-    base = '\.';
+    base = '\.',
+    mime = require('mime');
 
 http.createServer(function(req, res) {
-    pathname = base + req.url;
+    var pathname = base + req.url;
+    var type = mime.lookup(pathname);
     console.log(pathname);
 
     fs.stat(pathname, function(err, stats) {
@@ -13,7 +15,7 @@ http.createServer(function(req, res) {
             res.write('Resource mossing 404\n');
             res.end();
         } else {
-            res.setHeader('Content-Type', 'text/html');
+            res.setHeader('Content-Type', type);
 
             // Создание и перенаправление потока для чтения
             var file = fs.createReadStream(pathname);
