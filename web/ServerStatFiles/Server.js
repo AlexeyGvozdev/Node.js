@@ -4,7 +4,7 @@ var http = require('http'),
     path = require('path'),
     mime = require('mime');
 
-    var base = '.';
+var base = '.';
 
 http.createServer(function(req, res) {
     var pathname = path.normalize(base + req.url);
